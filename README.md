@@ -64,11 +64,15 @@
 ## 🐍 My Contributions & Stats 🐍
 <br>
 <div align="center">
-    <img src="https://github-readme-stats.vercel.app/api/wakatime?username=inzamam_idrees&layout=compact&theme=shadow_blue&title_color=00abf0&bg_color=00000000&text_color=DEDEDE&hide_border=false&range=all_time">
-    <br> 
-    <br>
-    <a href="https://github.com/inzamam-idrees">
-        <img alt="Inzamam Idrees's Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph/?username=inzamam-idrees&bg_color=RRGGBBAA&title_color=00abf0&color=00abf0&line=00abf0&point=DEDEDE&hide_border=true&custom_title=Contribution⠀Graph" />
+    
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=inzamam-idrees&show_icons=true&theme=radical)
+<br>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=inzamam-idrees&layout=compact&theme=radical"/>
+<br>
+<img src="https://github-readme-stats.vercel.app/api/wakatime?username=inzamam_idrees&layout=compact&theme=shadow_blue&title_color=00abf0&bg_color=00000000&text_color=DEDEDE&hide_border=false&range=all_time">
+<br>
+<a href="https://github.com/inzamam-idrees">
+    <img alt="Inzamam Idrees's Activity Graph" src="https://github-readme-activity-graph.vercel.app/graph/?username=inzamam-idrees&bg_color=RRGGBBAA&title_color=00abf0&color=00abf0&line=00abf0&point=DEDEDE&hide_border=true&custom_title=Contribution⠀Graph" />
     </a>
 </div>
 
@@ -96,12 +100,12 @@
     <a href="https://github.com/inzamam-idrees?tab=followers">
         <img src="https://img.shields.io/github/followers/inzamam-idrees?label=Followers&style=social" alt="GitHub Badge">
     </a>
-    <a href="https://github.com/inzamam-idrees">
+<!--     <a href="https://github.com/inzamam-idrees">
         <img src="https://badges.pufler.dev/years/inzamam-idrees" alt="Become a member year">
     </a>
     <a href="https://github.com/inzamam-idrees">
         <img src="https://badges.pufler.dev/repos/inzamam-idrees" alt="Number of repos">
-    </a>
+    </a> -->
 </div>
 
 <br>
@@ -122,7 +126,6 @@
     <br>
 </div>
 
-<br><br>
 <br><br>
 
 [![StandWithPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg)](https://github.com/Safouene1/support-palestine-banner)

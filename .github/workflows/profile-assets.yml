@@ -1,0 +1,89 @@
+name: Profile assets (stats, languages, snake)
+
+# Generates every dynamic image used in README.md and publishes them to the
+# `output` branch, so the profile never depends on rate-limited public hosts.
+
+on:
+  schedule:
+    - cron: "17 0 * * *" # daily, 00:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/profile-assets.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      USER: ${{ github.repository_owner }}
+      # Shared card styling: accent #00abf0, no border, no rank circle
+      BASE: show_icons=true&hide_border=true&hide_rank=true&include_all_commits=true&title_color=00abf0&icon_color=00abf0
+      LANGS: layout=compact&langs_count=8&hide_border=true&title_color=00abf0
+      DARK: bg_color=0d1117&text_color=c9d1d9
+      LIGHT: bg_color=ffffff&text_color=24292f
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---------- GitHub stats card ----------
+      - name: Stats card (dark)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ env.USER }}&${{ env.BASE }}&${{ env.DARK }}
+          path: dist/stats-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Stats card (light)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ env.USER }}&${{ env.BASE }}&${{ env.LIGHT }}
+          path: dist/stats-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ---------- Top languages card ----------
+      - name: Top languages (dark)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=${{ env.USER }}&${{ env.LANGS }}&${{ env.DARK }}
+          path: dist/top-langs-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Top languages (light)
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=${{ env.USER }}&${{ env.LANGS }}&${{ env.LIGHT }}
+          path: dist/top-langs-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ---------- Contribution snake ----------
+      - name: Contribution snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ env.USER }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark&color_snake=#00abf0
+
+      # ---------- Publish to the `output` branch ----------
+      - name: Publish to output branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: output
+          force_orphan: true
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "chore: refresh profile assets [skip ci]"
